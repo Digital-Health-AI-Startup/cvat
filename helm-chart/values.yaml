@@ -421,7 +421,9 @@ ingress:
   ## annotations:
   ##   kubernetes.io/ingress.class: nginx
   ##
-  annotations: {}
+  ## Following fix for issue described here: https://github.com/opencv/cvat/issues/4672
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
   ## @param ingress.className IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)
   ## This is supported in Kubernetes 1.18+ and required if you have more than one IngressClass marked as the default for your cluster
   ## ref: https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/
