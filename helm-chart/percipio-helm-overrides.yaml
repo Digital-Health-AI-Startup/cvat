@@ -1,0 +1,8 @@
+ingress:
+  enabled: true
+
+traefik:
+  enabled: true
+
+# nuclio:
+#   enabled: true

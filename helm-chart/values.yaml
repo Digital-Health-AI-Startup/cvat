@@ -134,6 +134,7 @@ cvat:
 #         - ReadWriteMany
         size: 20Gi
     disableDistinctCachePerService: false
+
   frontend:
     replicas: 1
     image: cvat/ui
@@ -177,6 +178,7 @@ cvat:
           targetPort: 80
           protocol: TCP
           name: http
+
   opa:
     replicas: 1
     image: openpolicyagent/opa
