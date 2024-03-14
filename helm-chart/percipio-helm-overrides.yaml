@@ -1,5 +1,22 @@
+cvat:
+  backend:
+    worker:
+      export:
+        replicas: 1
+      import:
+        replicas: 1
+    defaultStorage:
+      size: 25Gi
+
+kvrocks:
+  defaultStorage:
+    size: 20Gi
+
 ingress:
   enabled: true
+  ## Following fix for issue described here: https://github.com/opencv/cvat/issues/4672
+  # annotations:
+  #   nginx.ingress.kubernetes.io/use-regex: "true"
 
 traefik:
   enabled: true
