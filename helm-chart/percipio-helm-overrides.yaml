@@ -8,9 +8,9 @@ cvat:
     defaultStorage:
       size: 25Gi
 
-kvrocks:
-  defaultStorage:
-    size: 20Gi
+  kvrocks:
+    defaultStorage:
+      size: 20Gi
 
 ingress:
   enabled: true
