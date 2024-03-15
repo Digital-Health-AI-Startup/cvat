@@ -13,6 +13,7 @@ helm upgrade -n cvat cvat-dev -i --create-namespace ./helm-chart -f ./helm-chart
 # To create the cvat admin user:
 kubectl exec -it --namespace cvat $BACKEND_POD_NAME -c cvat-backend-app-container -- python manage.py createsuperuser
 
+# To get backend pod name, run kubectl get pods -n cvat and find the one with the 'backend-server' string
 # For example:
 kubectl exec -it --namespace cvat cvat-dev-backend-server-6c676d9947-6wlsc -c cvat-backend -- python manage.py createsuperuser
 
