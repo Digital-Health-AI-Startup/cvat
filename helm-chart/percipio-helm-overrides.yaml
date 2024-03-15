@@ -6,7 +6,10 @@ cvat:
       import:
         replicas: 1
     defaultStorage:
-      size: 25Gi
+      size: 1Ti
+      storageClassName: filestore-custom-drive
+      accessModes:
+        - ReadWriteMany
 
   kvrocks:
     defaultStorage:

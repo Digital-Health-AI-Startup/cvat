@@ -9,3 +9,8 @@
 # helm upgrade -n <desired_namespace> <release_name> -i --create-namespace ./helm-chart -f ./helm-chart/values.yaml -f ./helm-chart/values.override.yaml
 
 helm upgrade -n cvat cvat-dev -i --create-namespace ./helm-chart -f ./helm-chart/values.yaml -f ./helm-chart/percipio-helm-overrides.yaml
+
+# The following lines were used to deploy the managed kubernetes cluster:
+
+# Note: Autopilot clusters must be regional clusters, cannot be zonal unfortunately.
+gcloud container clusters create-auto percipio-dev --location us-east5
