@@ -10,6 +10,13 @@
 
 helm upgrade -n cvat cvat-dev -i --create-namespace ./helm-chart -f ./helm-chart/values.yaml -f ./helm-chart/percipio-helm-overrides.yaml
 
+# To create the cvat admin user:
+kubectl exec -it --namespace cvat $BACKEND_POD_NAME -c cvat-backend-app-container -- python manage.py createsuperuser
+
+# For example:
+kubectl exec -it --namespace cvat cvat-dev-backend-server-6c676d9947-6wlsc -c cvat-backend -- python manage.py createsuperuser
+
+
 # The following lines were used to deploy the managed kubernetes cluster:
 
 # Note: Autopilot clusters must be regional clusters, cannot be zonal unfortunately.
