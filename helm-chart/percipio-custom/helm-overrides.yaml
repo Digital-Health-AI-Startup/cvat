@@ -136,3 +136,13 @@ ingress:
 
 traefik:
   enabled: true
+
+
+postgresql:
+  enabled: false
+  external:
+    host: postgresql.default.svc.cluster.local
+    port: 5432
+  secret:
+    create: false
+    name: postgres-secret
