@@ -1,9 +1,18 @@
 # Kubernetes Cluster with CVAT
 
+Before deploying a new gke cluster, make sure you are logged in to gcp with the correct credentials:
+`gcloud auth application-default login`
+
 The following lines were used to deploy the managed kubernetes cluster:
 
 Note: Autopilot clusters must be regional clusters, cannot be zonal unfortunately.
 `gcloud container clusters create-auto percipio-dev --location us-east5`
+
+After this, to authenticate your kubectl with the cluster, run the following command:
+
+`gcloud container clusters get-credentials percipio-dev --location us-east5`
+
+Note: if you need information on installing kubectl for your operating system, please see https://kubernetes.io/docs/tasks/tools/. It's also recommended that you install Helm: https://helm.sh/docs/helm/helm_install/
 
 # CVAT
 

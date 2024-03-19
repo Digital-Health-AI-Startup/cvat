@@ -69,6 +69,7 @@ cvat:
         ephemeral-storage: "512Mi"
         memory: "512Mi"
 
+
 clickhouse:
   resources:
     requests:
@@ -83,32 +84,38 @@ clickhouse:
 
 nuclio:
   enabled: true
+  resources:
+    requests:
+      cpu: "5"
+      ephemeral-storage: "5Gi"
+      memory: "12Gi"
+    limits:
+      cpu: "5"
+      ephemeral-storage: "5Gi"
+      memory: "12Gi"
   registry:
     loginUrl: us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster
+  dashboard:
+    containerBuilderKind: "kaniko"
+    kaniko:
+      enabled: true
+    resources:
+      requests:
+        cpu: "5"
+        ephemeral-storage: "5Gi"
+        memory: "12Gi"
+      limits:
+        cpu: "5"
+        ephemeral-storage: "5Gi"
+        memory: "12Gi"
   controller:
     resources:
       requests:
-        cpu: "500m"
-        ephemeral-storage: "1Gi"
-        memory: "1Gi"
+        cpu: "5"
+        ephemeral-storage: "5Gi"
+        memory: "12Gi"
       limits:
-        cpu: "500m"
-        ephemeral-storage: "1Gi"
-        memory: "1Gi"
-    containerBuilderKind: "kaniko"
-    kaniko:
-      enabled: true
-  dashboard:
-    resources:
-      requests:
-        cpu: "250m"
-        ephemeral-storage: "512Mi"
-        memory: "512Mi"
-      limits:
-        cpu: "250m"
-        ephemeral-storage: "512Mi"
-        memory: "512Mi"
-    containerBuilderKind: "kaniko"
-    kaniko:
-      enabled: true
+        cpu: "5"
+        ephemeral-storage: "5Gi"
+        memory: "12Gi"
 
