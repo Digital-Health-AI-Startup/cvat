@@ -86,13 +86,13 @@ nuclio:
   enabled: true
   resources:
     requests:
-      cpu: "5"
-      ephemeral-storage: "5Gi"
-      memory: "12Gi"
+      cpu: "10"
+      ephemeral-storage: "30Gi"
+      memory: "16Gi"
     limits:
-      cpu: "5"
-      ephemeral-storage: "5Gi"
-      memory: "12Gi"
+      cpu: "10"
+      ephemeral-storage: "30Gi"
+      memory: "16Gi"
   registry:
     loginUrl: us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster
   dashboard:
@@ -101,21 +101,38 @@ nuclio:
       enabled: true
     resources:
       requests:
-        cpu: "5"
-        ephemeral-storage: "5Gi"
-        memory: "12Gi"
+        cpu: "500m"
+        ephemeral-storage: "512Mi"
+        memory: "1Gi"
       limits:
-        cpu: "5"
-        ephemeral-storage: "5Gi"
-        memory: "12Gi"
+        cpu: "500m"
+        ephemeral-storage: "512Mi"
+        memory: "1Gi"
   controller:
     resources:
       requests:
-        cpu: "5"
-        ephemeral-storage: "5Gi"
-        memory: "12Gi"
+        cpu: "500m"
+        ephemeral-storage: "512Mi"
+        memory: "1Gi"
       limits:
-        cpu: "5"
-        ephemeral-storage: "5Gi"
-        memory: "12Gi"
+        cpu: "500m"
+        ephemeral-storage: "512Mi"
+        memory: "1Gi"
 
+
+redis:
+  resources:
+    requests:
+      cpu: "250m"
+      ephemeral-storage: "512Mi"
+      memory: "512Mi"
+    limits:
+      cpu: "250m"
+      ephemeral-storage: "512Mi"
+      memory: "512Mi"
+
+# ingress:
+#   enabled: true
+
+traefik:
+  enabled: true
