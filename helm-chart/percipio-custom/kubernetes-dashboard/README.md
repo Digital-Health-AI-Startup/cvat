@@ -1,8 +1,11 @@
 # Instructions on setting up K8s Dashboard
 
-Instructions here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+## Deploy kubernetes-dashboard
+To deploy the dashboard and all of it's associated resources, run the following command:
 
-How to get to dashboard:
+`kubectl apply -f ./helm-chart/percipio-custom/kubernetes-dashboard/deploy.yaml`
+
+## Dashboard Access:
 
 - Make sure you're logged in to your gcloud cli: `gcloud auth application-default login`
 - Make sure you're current credentials are recognized by kubectl: `gcloud container clusters get-credentials percipio-dev --location us-east5`

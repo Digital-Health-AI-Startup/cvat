@@ -1,7 +1,4 @@
-# Default values for cvat.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+# Default values for cvat taken from opencv github repository
 
 imagePullSecrets: []
 nameOverride: ""
@@ -129,9 +126,6 @@ cvat:
             name: http
     defaultStorage:
         enabled: true
-#        storageClassName: default
-#        accessModes:
-#         - ReadWriteMany
         size: 20Gi
     disableDistinctCachePerService: false
 
@@ -141,36 +135,13 @@ cvat:
     tag: dev
     imagePullPolicy: Always
     labels: {}
-    #  test: test
     annotations: {}
-    # test.io/test: test
     resources: {}
     affinity: {}
     tolerations: []
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
     additionalEnv: []
-    # Example:
-    #  - name: volume-from-secret
-    # - name: TEST
-    #  value: "test"
     additionalVolumes: []
-    # Example(assumes that pvc was already created):
-    # - name: tmp
-    #   persistentVolumeClaim:
-    #       claimName: tmp
     additionalVolumeMounts: []
-    # Example:
-    # -   mountPath: /tmp
-    #     name: tmp
-    #     subPath: test
     service:
       type: ClusterIP
       ports:
@@ -185,36 +156,13 @@ cvat:
     tag: 0.45.0-rootless
     imagePullPolicy: IfNotPresent
     labels: {}
-    #  test: test
     annotations: {}
-    # test.io/test: test
     resources: {}
     affinity: {}
     tolerations: []
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
     additionalEnv: []
-    # Example:
-    #  - name: volume-from-secret
-    # - name: TEST
-    #  value: "test"
     additionalVolumes: []
-    # Example(assumes that pvc was already created):
-    # - name: tmp
-    #   persistentVolumeClaim:
-    #       claimName: tmp
     additionalVolumeMounts: []
-    # Example:
-    # -   mountPath: /tmp
-    #     name: tmp
-    #     subPath: test
     composeCompatibleServiceName: true # Sets service name to opa in order to be compatible with Docker Compose. Necessary because changing IAM_OPA_DATA_URL via environment variables in current images. Hinders multiple deployment due to duplicate name
     service:
       type: ClusterIP
@@ -237,40 +185,16 @@ cvat:
     tag: 2.7.0
     imagePullPolicy: IfNotPresent
     labels: {}
-    #  test: test
     annotations: {}
-    # test.io/test: test
     resources: {}
     affinity: {}
     tolerations: []
     nodeAffinity: {}
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
     additionalEnv: []
-    # Example:
-    # - name: TEST
-    #   value: "test"
     additionalVolumes: []
-    # Example(assumes that pvc was already created):
-    # - name: tmp
-    #   persistentVolumeClaim:
-    #       claimName: tmp
     additionalVolumeMounts: []
-    # Example:
-    # -   mountPath: /tmp
-    #     name: tmp
-    #     subPath: test
     defaultStorage:
       enabled: true
-#     storageClassName: default
-#     accessModes:
-#       - ReadWriteOnce
       size: 100Gi
 
 
@@ -295,8 +219,9 @@ postgresql:
     postgres_password: cvat_postgresql_postgres
     replication_password: cvat_postgresql_replica
 
-# https://artifacthub.io/packages/helm/bitnami/redis
+
 redis:
+  # https://artifacthub.io/packages/helm/bitnami/redis
   enabled: true
   external:
     host: 127.0.0.1
@@ -304,20 +229,22 @@ redis:
   auth:
     existingSecret: "cvat-redis-secret"
     existingSecretPasswordKey: password
+  # TODO: persistence options
   secret:
     create: true
     name: cvat-redis-secret
     password: cvat_redis
-  # TODO: persistence options
+
 
 nuclio:
-  enabled: false
 # See https://github.com/nuclio/nuclio/blob/master/hack/k8s/helm/nuclio/values.yaml for more info
-#  registry:
-#    loginUrl: someurl
-#    credentials:
-#      username: someuser
-#      password: somepass
+  # registry:
+  #   loginUrl: someurl
+  #   credentials:
+  #     username: someuser
+  #     password: somepass
+  enabled: false
+
 
 analytics:
   enabled: true
@@ -325,6 +252,7 @@ analytics:
   clickhouseUser: user
   clickhousePassword: user
   clickhouseHost: "{{ .Release.Name }}-clickhouse"
+
 
 vector:
   envFrom:
@@ -345,6 +273,7 @@ vector:
   image:
     tag: "0.26.0-alpine"
 
+
 clickhouse:
   shards: 1
   replicaCount: 1
@@ -357,6 +286,7 @@ clickhouse:
   # Consider enabling zookeeper if a distributed configuration is used
   zookeeper:
     enabled: false
+
 
 grafana:
   datasources:
@@ -407,6 +337,7 @@ grafana:
     auth.basic:
       enabled: false
 
+
 ingress:
   ## @param ingress.enabled Enable ingress resource generation for CVAT
   ##
@@ -433,6 +364,7 @@ ingress:
   ##
   tlsSecretName: ingress-tls-cvat
 
+
 traefik:
   enabled: false
   logs:
@@ -456,6 +388,7 @@ traefik:
             RequestProtocol: keep
             RouterName: keep
             StartUTC: keep
+
 
 smokescreen:
   opts: ''
