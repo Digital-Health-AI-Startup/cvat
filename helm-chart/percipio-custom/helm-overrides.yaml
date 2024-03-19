@@ -131,8 +131,8 @@ redis:
       ephemeral-storage: "512Mi"
       memory: "512Mi"
 
-# ingress:
-#   enabled: true
+ingress:
+  enabled: true
 
 traefik:
   enabled: true
