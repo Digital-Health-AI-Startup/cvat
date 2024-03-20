@@ -29,4 +29,4 @@ spec:
     app.kubernetes.io/instance: cvat-dev-cvat
     app.kubernetes.io/name: traefik
   sessionAffinity: None
-  type: ClusterIP  # Changed from LoadBalancer to ClusterIP
+  type: ClusterIP

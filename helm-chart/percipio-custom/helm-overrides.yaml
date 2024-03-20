@@ -1,5 +1,6 @@
 cvat:
   backend:
+    serviceAccountName: cvat-postgres-sa
     resources:
       requests:
         cpu: "250m"
@@ -86,13 +87,13 @@ nuclio:
   enabled: true
   resources:
     requests:
-      cpu: "10"
-      ephemeral-storage: "30Gi"
-      memory: "16Gi"
+      cpu: "250m"
+      ephemeral-storage: "512Mi"
+      memory: "500Mi"
     limits:
-      cpu: "10"
-      ephemeral-storage: "30Gi"
-      memory: "16Gi"
+      cpu: "250m"
+      ephemeral-storage: "512Mi"
+      memory: "500Mi"
   registry:
     loginUrl: us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster
   dashboard:
@@ -101,23 +102,23 @@ nuclio:
       enabled: true
     resources:
       requests:
-        cpu: "500m"
+        cpu: "250m"
         ephemeral-storage: "512Mi"
-        memory: "1Gi"
+        memory: "500Mi"
       limits:
-        cpu: "500m"
+        cpu: "250m"
         ephemeral-storage: "512Mi"
-        memory: "1Gi"
+        memory: "500Mi"
   controller:
     resources:
       requests:
-        cpu: "500m"
+        cpu: "250m"
         ephemeral-storage: "512Mi"
-        memory: "1Gi"
+        memory: "500Mi"
       limits:
-        cpu: "500m"
+        cpu: "250m"
         ephemeral-storage: "512Mi"
-        memory: "1Gi"
+        memory: "500Mi"
 
 
 redis:
@@ -137,11 +138,13 @@ ingress:
 traefik:
   enabled: true
 
+analytics:
+  enabled: false
 
 postgresql:
   enabled: false
   external:
-    host: postgresql.default.svc.cluster.local
+    host: percipio-dev:us-east5:portal-dev
     port: 5432
   secret:
     create: false
