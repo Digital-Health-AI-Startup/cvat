@@ -40,3 +40,6 @@ To get backend pod name, run kubectl get pods -n cvat and find the one with the 
 For example:
 
 `kubectl exec -it --namespace cvat cvat-dev-backend-server-7b8bbd478b-bnqp9 -c cvat-backend -- python manage.py createsuperuser`
+
+To forward your local port 8080 to port 80 of the traefik service:
+`kubectl port-forward --namespace cvat service/cvat-dev-traefik 8080:80`

@@ -1,7 +1,7 @@
 # Nuclio Deployment
 
 Forward port 8070 to the nuclio dashboard by running:
-`kubectl port-forward --namespace cvat $(kubectl get pods --namespace cvat -l nuclio.io/app=dashboard -o jsonpath='{.items[0].metadata.name}') 8070:8070`
+`kubectl port-forward --namespace cvat service/cvat-dev-nuclio-dashboard 8070:8070`
 
 View Nuclio Dashboard by browsing to:
 `http://localhost:8070`
@@ -9,5 +9,10 @@ View Nuclio Dashboard by browsing to:
 Create project named cvat:
 `nuctl create -n cvat project cvat`
 
+To configure docker to authenticate with the cloud artifact registry:
+`gcloud auth configure-docker us-east5-docker.pkg.dev`
+
 Deploy the segment anything model by running the following command from the root directory of our cvat github repo:
-`nuctl deploy --namespace cvat --project-name cvat --path serverless/pytorch/facebookresearch/sam/nuclio`
+`nuctl deploy --namespace cvat --project-name cvat --path serverless/pytorch/facebookresearch/sam/nuclio -v`
+
+`nuctl deploy -n cvat --project-name cvat --path serverless/pytorch/facebookresearch/sam/nuclio/ --registry us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster -v`

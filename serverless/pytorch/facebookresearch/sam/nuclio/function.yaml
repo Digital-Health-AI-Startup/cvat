@@ -52,6 +52,17 @@ spec:
       # map pip3 and python3 to pip and python
         - kind: RUN
           value: ln -s /usr/bin/pip3 /usr/local/bin/pip && ln -s /usr/bin/python3 /usr/bin/python
+  template:
+    spec:
+      containers:
+        - name: COREY
+          resources:
+            requests:
+              cpu: "4000m"
+              memory: "16Gi"
+            limits:
+              cpu: "4000m"
+              memory: "16Gi"
   triggers:
     myHttpTrigger:
       maxWorkers: 2
@@ -65,13 +76,4 @@ spec:
         name: always
         maximumRetryCount: 3
       mountMode: volume
-  containers:
-    resources:
-      requests:
-        cpu: "2000m"
-        ephemeral-storage: "10Gi"
-        memory: "12Gi"
-      limits:
-        cpu: "2000m"
-        ephemeral-storage: "10Gi"
-        memory: "12Gi"
+
