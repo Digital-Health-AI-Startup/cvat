@@ -19,7 +19,7 @@ Note: if you need information on installing kubectl for your operating system, p
 For official read me from CVAT, that was mostly followed for this deployment, please
 [see here for details.](https://opencv.github.io/cvat/docs/administration/advanced/k8s_deployment_with_helm/)
 
-First be sure to update the helm installations by running the following in the ./helm-charts directory:
+First be sure to update the helm installations by running the following in the ./helm-chart directory:
 
 `helm dependency build`
 
