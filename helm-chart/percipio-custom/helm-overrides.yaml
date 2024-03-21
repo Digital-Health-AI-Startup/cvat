@@ -85,15 +85,6 @@ clickhouse:
 
 nuclio:
   enabled: true
-  resources:
-    requests:
-      cpu: "250m"
-      ephemeral-storage: "512Mi"
-      memory: "500Mi"
-    limits:
-      cpu: "250m"
-      ephemeral-storage: "512Mi"
-      memory: "500Mi"
   registry:
     loginUrl: us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster
   dashboard:
@@ -121,16 +112,6 @@ nuclio:
         memory: "500Mi"
 
 
-redis:
-  resources:
-    requests:
-      cpu: "250m"
-      ephemeral-storage: "512Mi"
-      memory: "512Mi"
-    limits:
-      cpu: "250m"
-      ephemeral-storage: "512Mi"
-      memory: "512Mi"
 
 ingress:
   enabled: true
@@ -140,12 +121,3 @@ traefik:
 
 analytics:
   enabled: false
-
-postgresql:
-  enabled: false
-  external:
-    host: percipio-dev:us-east5:portal-dev
-    port: 5432
-  secret:
-    create: false
-    name: postgres-secret
