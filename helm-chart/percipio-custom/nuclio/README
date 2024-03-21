@@ -13,7 +13,7 @@ To configure docker to authenticate with the cloud artifact registry:
 `gcloud auth configure-docker us-east5-docker.pkg.dev`
 
 Deploy the segment anything model by running the following command from the root directory of our cvat github repo:
-`nuctl deploy --resource-limit 'cpu=4' --resource-limit 'memory=8Gi' --resource-request 'cpu=4' --resource-request 'memory=8Gi' -n cvat --project-name cvat --path serverless/pytorch/facebookresearch/sam/nuclio/ --registry us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster -v --readiness-timeout 3600`
+`nuctl deploy --resource-limit 'cpu=4' --resource-limit 'memory=6Gi' --resource-request 'cpu=4' --resource-request 'memory=6Gi' -n cvat --project-name cvat --path serverless/pytorch/facebookresearch/sam/nuclio/ --registry us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster -v --readiness-timeout 3600`
 
 Delete the function if needed:
 `nuctl delete function -n cvat pth-facebookresearch-sam-vit-h`
