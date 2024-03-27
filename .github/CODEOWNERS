@@ -3,14 +3,14 @@
 # These owners will be the default owners for everything in
 # the repo. Unless a later match takes precedence, they will
 # be requested for review when someone opens a pull request.
-*               @nmanovic
+<!-- *               @nmanovic -->
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
 # modifies components below, only the list of owners and not
 # the global owner(s) will be requested for a review.
 
-# Component: Server
+<!-- # Component: Server
 /cvat/           @Marishka17
 
 # Component: CVAT SDK/CLI
@@ -54,4 +54,4 @@ docker-compose* @azhavoro
 /utils/         @azhavoro
 /LICENSE        @nmanovic
 /.github/       @kirill-sizov
-/helm-chart/    @azhavoro
+/helm-chart/    @azhavoro -->

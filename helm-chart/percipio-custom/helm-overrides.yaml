@@ -1,0 +1,123 @@
+cvat:
+  backend:
+    serviceAccountName: cvat-postgres-sa
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "1Gi"
+        memory: "512Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "1Gi"
+        memory: "512Mi"
+
+    utils:
+      resources:
+        requests:
+          cpu: "250m"
+          ephemeral-storage: "512Mi"
+          memory: "1Gi"
+        limits:
+          cpu: "250m"
+          ephemeral-storage: "512Mi"
+          memory: "1Gi"
+
+    worker:
+      export:
+        replicas: 1
+      import:
+        replicas: 1
+
+    defaultStorage:
+      size: 1Ti
+      storageClassName: filestore-custom-drive
+      accessModes:
+        - ReadWriteMany
+
+  kvrocks:
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+
+    defaultStorage:
+      size: 20Gi
+
+  frontend:
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+
+  opa:
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "512Mi"
+
+
+clickhouse:
+  resources:
+    requests:
+      cpu: "500m"
+      ephemeral-storage: "512Mi"
+      memory: "1Gi"
+    limits:
+      cpu: "500m"
+      ephemeral-storage: "512Mi"
+      memory: "1Gi"
+
+
+nuclio:
+  enabled: true
+  registry:
+    loginUrl: us-east5-docker.pkg.dev/percipio-dev/ml-kubernetes-cluster
+  dashboard:
+    containerBuilderKind: "kaniko"
+    kaniko:
+      enabled: true
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "500Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "500Mi"
+  controller:
+    resources:
+      requests:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "500Mi"
+      limits:
+        cpu: "250m"
+        ephemeral-storage: "512Mi"
+        memory: "500Mi"
+
+
+
+ingress:
+  enabled: true
+
+traefik:
+  enabled: true
+
+analytics:
+  enabled: false
